@@ -80,7 +80,21 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 
 * Created package.json file using npm init
 
+* Created gulpfile.js (as outlined in udacity webcast and published in forum - see resources)
+
+* installed suggested packages
+
+### TODO and next steps
+
+* Edit gulpfile.js to suit project directory structure
+
 
 ### Resources
 
 * https://docs.npmjs.com/getting-started/using-a-package.json
+
+* https://discussions.udacity.com/t/1-8-2016-project-structure-for-front-end-projects-webcast/
+
+* http://andy-carter.com/blog/a-beginners-guide-to-the-task-runner-gulp
+
+
