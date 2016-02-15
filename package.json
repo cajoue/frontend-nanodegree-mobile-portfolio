@@ -1,0 +1,25 @@
+{
+  "name": "web-performance-optimization",
+  "version": "1.0.0",
+  "description": "Udacity FEND P4 project",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "npm install && gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cajoue/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "keywords": [
+    "udacity",
+    "gulp",
+    "web-performance",
+    "optimization"
+  ],
+  "author": "vyallup",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cajoue/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/cajoue/frontend-nanodegree-mobile-portfolio#readme"
+}

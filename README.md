@@ -75,3 +75,12 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 ### Actions
 
 * Created src and dist folders, moved all initial code to src
+
+* Created .gitignore file
+
+* Created package.json file using npm init
+
+
+### Resources
+
+* https://docs.npmjs.com/getting-started/using-a-package.json
