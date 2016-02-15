@@ -84,9 +84,14 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 
 * installed suggested packages
 
+* edited gulpfile.js to suit project directory structure
+
 ### TODO and next steps
 
-* Edit gulpfile.js to suit project directory structure
+* add image optimization to gulpfile
+
+* Part 1 measure performance
+
 
 
 ### Resources
