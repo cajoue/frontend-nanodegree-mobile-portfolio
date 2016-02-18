@@ -92,6 +92,8 @@ Feeling uninspired by the portfolio? Here's a list of cool portfolios I found af
 
 * add image optimization to gulpfile
 
+* deal with render-blocking JavaScript and CSS in above-the-fold content
+
 ### Part 1: Optimize PageSpeed Insights score for index.html
 Initial results from PageSpeed Insights using ngrok on source index.html
 
@@ -116,7 +118,7 @@ Consider Fixing:
 
 #### Mobile
 
-28 / 100Speed
+28 / 100 Speed
 
 Should Fix:
 * Optimize images
@@ -166,6 +168,17 @@ Enable compression
 
 Minify HTML
 
+2 - deal with render-blocking JavaScript and CSS in above-the-fold content
+
+JS
+Moved scripts to bottom of html
+Added async to analytics.js link to remove from critical path
+Added script to call google fonts
+
+CSS
+Added media attribute to print.css link to remove from critical path
+Minified and inlined critical css in html file (used Critical Path CSS Generator by Jonas Ohlsson)
+
 
 
 
@@ -177,5 +190,7 @@ Minify HTML
 * https://discussions.udacity.com/t/1-8-2016-project-structure-for-front-end-projects-webcast/
 
 * http://andy-carter.com/blog/a-beginners-guide-to-the-task-runner-gulp
+
+* https://jonassebastianohlsson.com/criticalpathcssgenerator/
 
 
