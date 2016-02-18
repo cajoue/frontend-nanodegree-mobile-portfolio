@@ -6,12 +6,23 @@ var concat = require('gulp-concat');
 var minifyCSS = require('gulp-minify-css');
 var replace = require('gulp-html-replace');
 var sourcemap = require('gulp-sourcemaps');
+var minifyhtml = require('gulp-minify-html');
 
 // part 1 Cam's portfolio
-gulp.task('content1', function(){
+gulp.task('content0', function(){
   gulp.src('./src/index.html')
     .pipe(gulp.dest('./dist/'))
     .pipe(reload({stream: true}))
+});
+
+// Minifies our HTML files and outputs them to dist/*.html
+gulp.task('content1', function() {
+    return gulp.src('./src/*.html')
+        .pipe(minifyhtml({
+            empty: true,
+            quotes: true
+        }))
+        .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('scripts1', function(){

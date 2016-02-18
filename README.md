@@ -205,7 +205,16 @@ Mobile
 93 / 100 Speed
 94 / 100 without source mapping
 
+5 - minify html file - please see index-not-min.html for unminimized version of index.html.
 
+Results
+desktop
+96 / 100 Suggestions Summary
+with and without source mapping
+
+Mobile
+934/ 100 Speed
+with and without source mapping
 
 
 ### Resources
