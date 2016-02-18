@@ -195,6 +195,16 @@ desktop
 Mobile
 94 / 100 Speed
 
+4 - Minify scripts and styles (inline and link to minified files in dist folder) Note, the PageSpeed score went down for mobile, this is due to the source mapping function in the gulpfile (which caused a minify JS suggestion from PageSpeed) :( but I thought it was worth keeping in.
+
+desktop
+95 / 100 Suggestions Summary
+96 / 100 without source mapping
+
+Mobile
+93 / 100 Speed
+94 / 100 without source mapping
+
 
 
 
