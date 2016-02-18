@@ -179,6 +179,21 @@ CSS
 Added media attribute to print.css link to remove from critical path
 Minified and inlined critical css in html file (used Critical Path CSS Generator by Jonas Ohlsson)
 
+Results:
+desktop
+95 / 100 Suggestions Summary
+
+Mobile
+94 / 100 Speed
+
+Extra Fixes
+
+3 - Specify Image sizes.
+desktop
+95 / 100 Suggestions Summary
+
+Mobile
+94 / 100 Speed
 
 
 
