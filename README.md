@@ -205,7 +205,7 @@ Mobile
 93 / 100 Speed
 94 / 100 without source mapping
 
-5 - minify html file - please see index-not-min.html for unminimized version of index.html.
+5 - minify html file and image optimization - see dist folder for minified version of index.html and src folder for readable version
 
 Results
 desktop
@@ -213,7 +213,7 @@ desktop
 with and without source mapping
 
 Mobile
-934/ 100 Speed
+94 / 100 Speed
 with and without source mapping
 
 

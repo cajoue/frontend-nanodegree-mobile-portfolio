@@ -7,6 +7,8 @@ var minifyCSS = require('gulp-minify-css');
 var replace = require('gulp-html-replace');
 var sourcemap = require('gulp-sourcemaps');
 var minifyhtml = require('gulp-minify-html');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 
 // part 1 Cam's portfolio
 gulp.task('content0', function(){
@@ -42,7 +44,16 @@ gulp.task('styles1', function(){
     .pipe(reload({stream: true}))
 });
 
-// add image optimization 'images1' ./src/img/*'
+// add image optimization 'images1' './src/img/*'
+// Optimizes image files and outputs them to dist/img/*
+gulp.task('images1', function() {
+    return gulp.src('./src/img/*')
+      .pipe(imagemin({
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}],
+        use: [pngquant()]}))
+      .pipe(gulp.dest('./dist/img'));
+});
 
 // part 2 Cam's Pizzeria
 gulp.task('content2', function(){
