@@ -11,13 +11,7 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 
 // part 1 Cam's portfolio
-gulp.task('content0', function(){
-  gulp.src('./src/index.html')
-    .pipe(gulp.dest('./dist/'))
-    .pipe(reload({stream: true}))
-});
-
-// Minifies our HTML files and outputs them to dist/*.html
+// Minifies HTML files and outputs them to dist/*.html
 gulp.task('content1', function() {
     return gulp.src('./src/*.html')
         .pipe(minifyhtml({
@@ -27,6 +21,7 @@ gulp.task('content1', function() {
         .pipe(gulp.dest('./dist/'));
 });
 
+// Concats & minifies js files and outputs them to dist/js/app.js
 gulp.task('scripts1', function(){
   gulp.src('./src/js/*.js')
     .pipe(sourcemap.init())
@@ -37,6 +32,7 @@ gulp.task('scripts1', function(){
     .pipe(reload({stream: true}))
 });
 
+// Minifies css files and outputs them to dist/css/*.css
 gulp.task('styles1', function(){
   gulp.src('./src/css/*.css')
     .pipe(minifyCSS())
@@ -44,7 +40,6 @@ gulp.task('styles1', function(){
     .pipe(reload({stream: true}))
 });
 
-// add image optimization 'images1' './src/img/*'
 // Optimizes image files and outputs them to dist/img/*
 gulp.task('images1', function() {
     return gulp.src('./src/img/*')
@@ -88,12 +83,9 @@ gulp.task('serve', function(){
     }
   });
 
-  gulp.watch('./src/index.html', ['content1']);
-  gulp.watch('./src/js/*.js', ['scripts1']);
-  gulp.watch('./src/css/*.css', ['styles1']);
   gulp.watch('./src/views/pizza.html', ['content2']);
   gulp.watch('./src/views/js/*.js', ['scripts2']);
   gulp.watch('./src/views/css/*.css', ['styles2']);
 });
 
-gulp.task('default', ['content1', 'scripts1', 'styles1', 'content2', 'scripts2', 'styles2', 'serve']);
+gulp.task('default', ['content2', 'scripts2', 'styles2', 'serve']);
