@@ -51,10 +51,13 @@ gulp.task('images1', function() {
 });
 
 // part 2 Cam's Pizzeria
-gulp.task('content2', function(){
-  gulp.src('./src/views/pizza.html')
-    .pipe(gulp.dest('./dist/views/'))
-    .pipe(reload({stream: true}))
+gulp.task('content2', function() {
+    return gulp.src('./src/views/pizza.html')
+        .pipe(minifyhtml({
+            empty: true,
+            quotes: true
+        }))
+        .pipe(gulp.dest('./dist/views'));
 });
 
 // there's only one js file so will not rename it (not even necessary to concat it)

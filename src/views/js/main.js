@@ -522,14 +522,23 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+  var pizzaItems = document.getElementsByClassName('mover');
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
+  // this loop is causing the forced reflow (layout and recalc styles)
+  // the number of items selection could be done with getElementsByClassName and maybe
+  // outside the function - also do not need 200 pizza items! 32 works for my screen... 8 cols 4 rows
+  // there are only 5 values of phase - take outside the loop
+  // The Element.scrollTop property gets or sets the number of pixels that the content of an element is scrolled upward.
+  // take scrollTop out of loop.
+
+  // var items = document.querySelectorAll('.mover');
+  // var pizzaItems = document.getElementsByClassName('mover');
+  for (var i = 0; i < pizzaItems.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    pizzaItems[i].style.left = pizzaItems[i].basicLeft + 100 * phase + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -549,7 +558,8 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  // limit the number of sliding pizzas
+  for (var i = 0; i < 32; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

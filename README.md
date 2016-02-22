@@ -184,8 +184,9 @@ with and without source mapping
 ### Actions - Part 2
 * Used Chrome Devtools for analysis
 * Identified two functions that caused forced reflow
-* Resize Fix1- Removed unnecessary function determineDx and Moved DOM node selection out of resize loop
+* Resize Fix1 - Removed unnecessary function determineDx and Moved DOM node selection out of resize loop
 * Optimize images and minify dist folder
+* scroll Fix1 - used getElementsByClassName and reduced number of pizzas
 ### Initial results
 #### Console messages from Timing API
 Time to generate pizzas on load: 19.01 ms
@@ -225,26 +226,49 @@ resizePiz | 1.59 | 0.93
 Recalc Style |  1.43 | 1.43 | 200 elements
 Layout       | 16.0  | 16.0 | 115 nodes
 
+#### resize after image optimization
+fps: 32
+Frame time (ms): 31
+Summary   | Time   | Self Time
+---------------------------
+mouseup   | 1.15 | 0.04
+change    | 1.11 | 0.10
+func call | 0.95 | 0.25
+onchange  | 0.71 | 0
+resizePiz | 0.71 | 0.52
 
-#### Initial Scroll
-Frames per second: 17.9, 18.6, 17.9, 13.7, 18.6
-Frame time (ms): 148.5, 68.5, *69.3*, 69.2, 67.3
+
+#### Initial Scroll - samples
+Frames per second: 13, 12, 12, 12, 12
+Frame time (ms): 75.55, 78.9, *77.6*, 80.6, 80.7
 Summary   | Time  | Self Time
 ---------------------------
-Scroll    | 60.97 | 0.09
-func call | 60.87 | 0.14
-updatePos | 60.73 | *29.70*
+Scroll    | 68.39 | 0.11
+func call | 67.85 | 0.57
+updatePos | 67.27 | *32.88*
 *Forced reflow is a likely performance bottleneck.*
+
+#### scroll Fix1
+* use getElementsByClassName and reduce number of pizzas
+Frames per second: 39, 53, 51, 47, 45
+Frame time (ms): 25.6, 18.7, *19.6*, 20.8, 21.9
+Summary   | Time  | Self Time
+---------------------------
+Scroll    | 12.84 | 0.10
+func call | 12.29 | 0.09
+updatePos | 12.20 | *6.62*
+*Forced reflow is a likely performance bottleneck.*
+
 
 
 ### TODO and next steps
 * Fix Forced reflow problems on scroll
 * host on gh-pages
 * reduce number of images
-* optimize images
 
 ### Resources
 * https://docs.npmjs.com/getting-started/using-a-package.json
 * https://discussions.udacity.com/t/1-8-2016-project-structure-for-front-end-projects-webcast/
 * http://andy-carter.com/blog/a-beginners-guide-to-the-task-runner-gulp
 * https://jonassebastianohlsson.com/criticalpathcssgenerator/
+* http://www.w3schools.com/jsref/prop_element_scrolltop.asp
