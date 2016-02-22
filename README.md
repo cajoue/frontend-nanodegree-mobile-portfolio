@@ -81,6 +81,7 @@ Researched automation and build tools for js, css and image optimization. Decide
 * installed suggested packages
 * edited gulpfile.js to suit project directory structure
 * add image optimization to gulpfile
+* edited gulpfile to use browser sync
 ## Part 1: Optimize PageSpeed Insights score for index.html
 ### Actions - Part 1
 * Part 1 measure performance
@@ -184,7 +185,7 @@ with and without source mapping
 * Used Chrome Devtools for analysis
 * Identified two functions that caused forced reflow
 * Resize Fix1- Removed unnecessary function determineDx and Moved DOM node selection out of resize loop
-* Optimize images
+* Optimize images and minify dist folder
 ### Initial results
 #### Console messages from Timing API
 Time to generate pizzas on load: 19.01 ms

@@ -57,11 +57,12 @@ gulp.task('content2', function(){
     .pipe(reload({stream: true}))
 });
 
+// there's only one js file so will not rename it (not even necessary to concat it)
 gulp.task('scripts2', function(){
   gulp.src('./src/views/js/*.js')
     .pipe(sourcemap.init())
       .pipe(uglify())
-      .pipe(concat('app.js'))
+      .pipe(concat('main.js'))
     .pipe(sourcemap.write())
     .pipe(gulp.dest('./dist/views/js'))
     .pipe(reload({stream: true}))
@@ -94,6 +95,7 @@ gulp.task('serve', function(){
   gulp.watch('./src/views/pizza.html', ['content2']);
   gulp.watch('./src/views/js/*.js', ['scripts2']);
   gulp.watch('./src/views/css/*.css', ['styles2']);
+  gulp.watch('./src/views/images/*', ['images2']);
 });
 
-gulp.task('default', ['content2', 'scripts2', 'styles2', 'serve']);
+gulp.task('default', ['content2', 'scripts2', 'styles2', 'images2', 'serve']);
