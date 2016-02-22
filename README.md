@@ -186,7 +186,8 @@ with and without source mapping
 * Identified two functions that caused forced reflow
 * Resize Fix1 - Removed unnecessary function determineDx and Moved DOM node selection out of resize loop
 * Optimize images and minify dist folder
-* scroll Fix1 - used getElementsByClassName and reduced number of pizzas
+* scroll Fix1 - updatePositions() used getElementsByClassName and reduced number of pizzas
+* scroll Fix2 - updatePositions() move phase and scrolldist out of loop
 ### Initial results
 #### Console messages from Timing API
 Time to generate pizzas on load: 19.01 ms
@@ -249,7 +250,7 @@ updatePos | 67.27 | *32.88*
 *Forced reflow is a likely performance bottleneck.*
 
 #### scroll Fix1
-* use getElementsByClassName and reduce number of pizzas
+* updatePositions() use getElementsByClassName and reduce number of pizzas
 Frames per second: 39, 53, 51, 47, 45
 Frame time (ms): 25.6, 18.7, *19.6*, 20.8, 21.9
 Summary   | Time  | Self Time
@@ -259,12 +260,19 @@ func call | 12.29 | 0.09
 updatePos | 12.20 | *6.62*
 *Forced reflow is a likely performance bottleneck.*
 
+#### scroll Fix2
+* updatePositions() move phase and scrolldist out of loop
+Frames per second: 66, 66, 59, 59, 60
+Frame time (ms): 15.1, 15.1, *16.8*, 16.8, 16.6
+Summary   | Time  | Self Time
+---------------------------
+Scroll    | 0.37 | 0.08
+func call | 0.29 | 0.24
+updatePos | 0.05 | 0.05
 
 
 ### TODO and next steps
-* Fix Forced reflow problems on scroll
 * host on gh-pages
-* reduce number of images
 
 ### Resources
 * https://docs.npmjs.com/getting-started/using-a-package.json
