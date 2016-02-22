@@ -74,7 +74,15 @@ gulp.task('styles2', function(){
     .pipe(reload({stream: true}))
 });
 
-// add image optimization 'images2' ./src/views/images/*'
+// Optimizes image files and outputs them to dist/views/img/*
+gulp.task('images2', function() {
+    return gulp.src('./src/views/images/*')
+      .pipe(imagemin({
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}],
+        use: [pngquant()]}))
+      .pipe(gulp.dest('./dist/views/images'));
+});
 
 gulp.task('serve', function(){
   browserSync.init({

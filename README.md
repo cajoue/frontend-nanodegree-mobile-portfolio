@@ -184,7 +184,7 @@ with and without source mapping
 * Used Chrome Devtools for analysis
 * Identified two functions that caused forced reflow
 * Resize Fix1- Removed unnecessary function determineDx and Moved DOM node selection out of resize loop
-
+* Optimize images
 ### Initial results
 #### Console messages from Timing API
 Time to generate pizzas on load: 19.01 ms
@@ -237,7 +237,10 @@ updatePos | 60.73 | *29.70*
 
 
 ### TODO and next steps
-* Fix Forced reflow problems
+* Fix Forced reflow problems on scroll
+* host on gh-pages
+* reduce number of images
+* optimize images
 
 ### Resources
 * https://docs.npmjs.com/getting-started/using-a-package.json
