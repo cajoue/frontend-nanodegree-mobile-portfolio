@@ -277,6 +277,9 @@ Scroll    | 0.37 | 0.08
 func call | 0.29 | 0.24
 updatePos | 0.05 | 0.05
 
+#### scroll Fix3
+used a lovely transform instead of style change in updatePositions
+
 ### Optimized results
 #### Console messages from Timing API
 Time to generate pizzas on load: 48.26 ms
@@ -293,7 +296,8 @@ Time to generate pizzas on load (ms):56.85, 43.57, 59.89, 46.98, 52.02
 dcl 33.17, 35.21, 30.83
 
 ### TODO and next steps
-
+measure improvements using transform.
+rAF - may not be necessary
 
 ### Resources
 * https://docs.npmjs.com/getting-started/using-a-package.json
@@ -301,3 +305,4 @@ dcl 33.17, 35.21, 30.83
 * http://andy-carter.com/blog/a-beginners-guide-to-the-task-runner-gulp
 * https://jonassebastianohlsson.com/criticalpathcssgenerator/
 * http://www.w3schools.com/jsref/prop_element_scrolltop.asp
+* https://discussions.udacity.com/t/if-using-gulp-for-p4-you-might-find-this-useful/36817

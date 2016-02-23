@@ -500,8 +500,10 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 100; i++) {
+// move pizzasDiv out of loop
   var pizzasDiv = document.getElementById("randomPizzas");
+for (var i = 2; i < 100; i++) {
+  // var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -529,6 +531,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+// Moved pizzaItems outside of function so taht don't repeatedly call DOM elements
 var pizzaItems = document.getElementsByClassName('mover');
 function updatePositions() {
   frame++;
@@ -549,9 +552,11 @@ function updatePositions() {
     phase[i] = Math.sin((scrollDist / 1250) + i);
   }
 
+  // try using a transform instead of style change - oooh lovely :)
   for (var i = 0; i < pizzaItems.length; i++) {
     // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    pizzaItems[i].style.left = pizzaItems[i].basicLeft + 100 * phase[i % 5] + 'px';
+    //pizzaItems[i].style.left = pizzaItems[i].basicLeft + 100 * phase[i % 5] + 'px';
+    pizzaItems[i].style.transform = 'translateX(' + (pizzaItems[i].basicLeft + 100 * phase[i % 5]) + 'px)';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
