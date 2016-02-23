@@ -108,6 +108,7 @@ Consider Fixing:
 * Leverage browser caching
 * Enable compression
 * Minify HTML
+
 100 / 100 User Experience
 
 PageSpeed Insights supplied optimized image, js and css resources for download.
@@ -185,9 +186,11 @@ with and without source mapping
 * Used Chrome Devtools for analysis
 * Identified two functions that caused forced reflow
 * Resize Fix1 - Removed unnecessary function determineDx and Moved DOM node selection out of resize loop
-* Optimize images and minify dist folder
+* general Fix2 - Optimize images and minify dist folder
 * scroll Fix1 - updatePositions() used getElementsByClassName and reduced number of pizzas
 * scroll Fix2 - updatePositions() move phase and scrolldist out of loop
+* general Fix2 - use getElementBy... instead of querySelector throughout for consistency and efficiency.
+
 ### Initial results
 #### Console messages from Timing API
 Time to generate pizzas on load: 19.01 ms
@@ -270,6 +273,20 @@ Scroll    | 0.37 | 0.08
 func call | 0.29 | 0.24
 updatePos | 0.05 | 0.05
 
+### Optimized results
+#### Console messages from Timing API
+Time to generate pizzas on load: 48.26 ms
+Avg time (ms) to generate last 10 frames: 3.20, 0.24, 0.24, 0.27, 0.24
+Time (ms) to resize Pizzas: 1.36, 0.40, 0.43, 0.44, 0.40
+
+### Some trials that didn't have much effect
+__move elem variable outside of pizza creation loop__
+*Inside loop:*
+Time to generate pizzas on load (ms): 48.235, 71.44, 56.03, 53.84, 56.36
+dcl 34.45, 30.06, 28.97
+*Outside loop:*
+Time to generate pizzas on load (ms):56.85, 43.57, 59.89, 46.98, 52.02
+dcl 33.17, 35.21, 30.83
 
 ### TODO and next steps
 * host on gh-pages

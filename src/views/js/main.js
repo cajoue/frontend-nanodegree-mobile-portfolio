@@ -404,21 +404,27 @@ var resizePizzas = function(size) {
 
   // Changes the value for the size of the pizza above the slider
   function changeSliderLabel(size) {
+    // use getElementbyId instead of querySelector
+    // try use variable for pizzaSize - didn't work
+    // var pizzaSize = document.getElementById('pizzaSize').innerHTML;
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById('pizzaSize').innerHTML = "Small";
+        //console.log('413: ' + document.getElementById('pizzaSize').innerHTML);
+        //document.querySelector("#pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById('pizzaSize').innerHTML = "Medium";
+        //document.querySelector("#pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById('pizzaSize').innerHTML = "Large";
+        //document.querySelector("#pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
     }
   }
-
   changeSliderLabel(size);
 
   // Browser Rendering Optimization Course established that the determineDx
@@ -472,7 +478,8 @@ var resizePizzas = function(size) {
 
     // select DOM nodes and save to variable outside of loop - instead of
     // querying multiple times!
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    // also use getElementsByClassName instead of queryselectorall
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 
     for (var i = 0; i < randomPizzas.length; i++) {
       //var dx = determineDx(randomPizzas[i], size);
@@ -522,7 +529,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-  var pizzaItems = document.getElementsByClassName('mover');
+var pizzaItems = document.getElementsByClassName('mover');
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
@@ -561,10 +568,13 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
+// use getElementById instead of querySelector
+// does declare elem outside loop make a difference? not according to measurements
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   // limit the number of sliding pizzas
+  // var elem;
   for (var i = 0; i < 32; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -573,7 +583,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
