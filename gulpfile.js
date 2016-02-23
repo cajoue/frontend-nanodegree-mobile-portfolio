@@ -9,6 +9,7 @@ var sourcemap = require('gulp-sourcemaps');
 var minifyhtml = require('gulp-minify-html');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
+var ghPages = require('gulp-gh-pages');
 
 // part 1 Cam's portfolio
 // Minifies HTML files and outputs them to dist/*.html
@@ -71,6 +72,7 @@ gulp.task('scripts2', function(){
     .pipe(reload({stream: true}))
 });
 
+// minify CSS
 gulp.task('styles2', function(){
   gulp.src('./src/views/css/*.css')
     .pipe(minifyCSS())
@@ -88,6 +90,7 @@ gulp.task('images2', function() {
       .pipe(gulp.dest('./dist/views/images'));
 });
 
+// automatically sync browswer when make changes to 'watched' files
 gulp.task('serve', function(){
   browserSync.init({
     server: {
@@ -101,4 +104,11 @@ gulp.task('serve', function(){
   gulp.watch('./src/views/images/*', ['images2']);
 });
 
+// publish contents to Github pages
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
+
+// gulp default watches Cam's Pizzeria files and serves them to browserSync
 gulp.task('default', ['content2', 'scripts2', 'styles2', 'images2', 'serve']);

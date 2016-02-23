@@ -83,6 +83,8 @@ Researched automation and build tools for js, css and image optimization. Decide
 * add image optimization to gulpfile
 * edited gulpfile to use browser sync
 ## Part 1: Optimize PageSpeed Insights score for index.html
+View optimized pages here: http://cajoue.github.io/frontend-nanodegree-mobile-portfolio/
+
 ### Actions - Part 1
 * Part 1 measure performance
 * Optimized images
@@ -182,6 +184,8 @@ with and without source mapping
 with and without source mapping
 
 ## Part 2: Optimize Frames per Second in pizza.html
+View optimized pages here: http://cajoue.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html
+
 ### Actions - Part 2
 * Used Chrome Devtools for analysis
 * Identified two functions that caused forced reflow
@@ -289,7 +293,7 @@ Time to generate pizzas on load (ms):56.85, 43.57, 59.89, 46.98, 52.02
 dcl 33.17, 35.21, 30.83
 
 ### TODO and next steps
-* host on gh-pages
+
 
 ### Resources
 * https://docs.npmjs.com/getting-started/using-a-package.json
