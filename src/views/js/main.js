@@ -546,17 +546,25 @@ function updatePositions() {
 
   // var items = document.querySelectorAll('.mover');
   // var pizzaItems = document.getElementsByClassName('mover');
-  var phase = [];
-  var scrollDist = document.body.scrollTop;
+  var phases = [];
+  var scrollDist = document.body.scrollTop / 1250;
   for (var i = 0; i < 5; i++) {
-    phase[i] = Math.sin((scrollDist / 1250) + i);
+    phases[i] = Math.sin(scrollDist + i) * 100;
   }
 
   // try using a transform instead of style change - oooh lovely :)
+  // needed to rework code as transform had wrong pizza positions
+  // translated by half a screen.
+  var halfScreen = window.innerWidth / 2;
+  // the halfScreen works - but I'm not sure why....
+
   for (var i = 0; i < pizzaItems.length; i++) {
-    // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    //pizzaItems[i].style.left = pizzaItems[i].basicLeft + 100 * phase[i % 5] + 'px';
-    pizzaItems[i].style.transform = 'translateX(' + (pizzaItems[i].basicLeft + 100 * phase[i % 5]) + 'px)';
+     var phase = phases[i % 5] - halfScreen;
+    //pizzaItems[i].style.left = pizzaItems[i].basicLeft + phase + 'px';
+    pizzaItems[i].style.transform = 'translateX(' + (pizzaItems[i].basicLeft + phase) + 'px)';
+    //pizzaItems[i].style.transform = 'translateX(' + phase + 'px)';
+    //console.log(pizzaItems[i].style.transform);
+    //console.log(pizzaItems[i].style.left);
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.

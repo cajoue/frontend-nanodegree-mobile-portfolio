@@ -279,6 +279,7 @@ updatePos | 0.05 | 0.05
 
 #### scroll Fix3
 used a lovely transform instead of style change in updatePositions
+noticed that the pizza position was now off :( so made change to calc
 
 ### Optimized results
 #### Console messages from Timing API
