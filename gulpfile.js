@@ -52,6 +52,7 @@ gulp.task('images1', function() {
 });
 
 // part 2 Cam's Pizzeria
+// Minifies HTML files and outputs them to dist/views/*.html
 gulp.task('content2', function() {
     return gulp.src('./src/views/pizza.html')
         .pipe(minifyhtml({
@@ -91,6 +92,7 @@ gulp.task('images2', function() {
 });
 
 // automatically sync browswer when make changes to 'watched' files
+// only watching the pizzeria files for this part of project
 gulp.task('serve', function(){
   browserSync.init({
     server: {

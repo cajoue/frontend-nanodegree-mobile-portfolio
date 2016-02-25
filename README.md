@@ -1,79 +1,37 @@
-## Website Performance Optimization portfolio project
+# Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+The challenge was to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
-To get started, check out the repository, inspect the code,
+The optimized portfolio can be viewed and tested here: http://cajoue.github.io/frontend-nanodegree-mobile-portfolio
 
-### Getting started
+To review the code, check out the repository
 
-#### Part 1: Optimize PageSpeed Insights score for index.html
+### more ways to view the project:
 
-Some useful tips to help you get started:
-
-1. Check out the repository
 1. To inspect the site on your phone, you can run a local server
 
   ```bash
   $> cd /path/to/your-project-folder
   $> python -m SimpleHTTPServer 8080
   ```
+Then open a browser and visit localhost:8080
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
+2. To make your local server accessible remotely, download and install [ngrok](https://ngrok.com/).
 
   ``` bash
   $> cd /path/to/your-project-folder
   $> ngrok http 8080
   ```
 
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
+Then copy the public URL ngrok gives you and test it using [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/)! 
+Or you could profile the gh-pages version: [frontend-nanodegree-mobile-portfolio](http://cajoue.github.io/frontend-nanodegree-mobile-portfolio)
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
-
-#### Part 2: Optimize Frames per Second in pizza.html
-
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
-
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
-
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
-
-### Sample Portfolios
-
-Feeling uninspired by the portfolio? Here's a list of cool portfolios I found after a few minutes of Googling.
-
-* <a href="http://www.reddit.com/r/webdev/comments/280qkr/would_anybody_like_to_post_their_portfolio_site/">A great discussion about portfolios on reddit</a>
-* <a href="http://ianlunn.co.uk/">http://ianlunn.co.uk/</a>
-* <a href="http://www.adhamdannaway.com/portfolio">http://www.adhamdannaway.com/portfolio</a>
-* <a href="http://www.timboelaars.nl/">http://www.timboelaars.nl/</a>
-* <a href="http://futoryan.prosite.com/">http://futoryan.prosite.com/</a>
-* <a href="http://playonpixels.prosite.com/21591/projects">http://playonpixels.prosite.com/21591/projects</a>
-* <a href="http://colintrenter.prosite.com/">http://colintrenter.prosite.com/</a>
-* <a href="http://calebmorris.prosite.com/">http://calebmorris.prosite.com/</a>
-* <a href="http://www.cullywright.com/">http://www.cullywright.com/</a>
-* <a href="http://yourjustlucky.com/">http://yourjustlucky.com/</a>
-* <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
-* <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
-* <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+### repo folders: src and dist
+The __src__ folder contains readable project files, that show optimizations and their explanations.
+The __dist__ folder contains files that have been further optimized (minified and stripped of comments). Performance was assessed using the __dist__ files
 
 ## First steps
-Researched automation and build tools for js, css and image optimization. Decided to try Gulp this time as I had already tried Grunt in a previous project.
+Having read the [evaluation guidelines](https://www.udacity.com/course/viewer#!/c-nd001/l-2735848561/m-2686388535) I researched automation and build tools for js, css and image optimization. Decided to try Gulp this time as I had already tried Grunt in a previous project.
 * Created src and dist folders, moved all initial code to src
 * Created .gitignore file
 * Created package.json file using npm init
@@ -81,61 +39,56 @@ Researched automation and build tools for js, css and image optimization. Decide
 * installed suggested packages
 * edited gulpfile.js to suit project directory structure
 * add image optimization to gulpfile
-* edited gulpfile to use browser sync
+* add browser sync to gulpfile
+* add set-up gh-pages to gulpfile
+
+
 ## Part 1: Optimize PageSpeed Insights score for index.html
-View optimized pages here: http://cajoue.github.io/frontend-nanodegree-mobile-portfolio/
+
+View and measure optimized pages here: http://cajoue.github.io/frontend-nanodegree-mobile-portfolio/
+
+Aim to optimize the PageSpeed Insights score for index.html to 90 or higher
 
 ### Actions - Part 1
-* Part 1 measure performance
+* Measured performance
 * Optimized images
-* dealt with render-blocking JavaScript and CSS in above-the-fold content
+* Dealt with render-blocking JavaScript and CSS in above-the-fold content
 * Achieved PageScore targets of 94 for Mobile and 96 for DeskTop
 ### Initial results
 Used PageSpeed Insights running ngrok on source index.html
-##### Desktop
-30 / 100 Suggestions Summary
-Should Fix:
+#### Desktop
+__30 / 100__ Suggestions Summary
+_Should Fix:_
 * Optimize images
-Consider Fixing:
+_Consider Fixing:_
 * Eliminate render-blocking JavaScript and CSS in above-the-fold content
 * Leverage browser caching
 * Enable compression
 * Minify HTML
-##### Mobile
-28 / 100 Speed
-Should Fix:
+#### Mobile
+__28 / 100__ Speed
+_Should Fix:_
 * Optimize images
 * Eliminate render-blocking JavaScript and CSS in above-the-fold content
-Consider Fixing:
+_Consider Fixing:_
 * Leverage browser caching
 * Enable compression
 * Minify HTML
 
-100 / 100 User Experience
+__100 / 100__ User Experience
 
 PageSpeed Insights supplied optimized image, js and css resources for download.
 
 ### Optimizations:
-1 - use image files generated by PageSpeed Insights and measure again. Optimized images copied to corresponding directories in dist folder. Have renamed pizzeria to pizzeria-small in case I need something different for part 2.
+1. Use image files generated by PageSpeed Insights and measure again. Optimized images copied to corresponding directories in dist folder. Have renamed pizzeria to pizzeria-small in case I need something different for part 2 
 
-#### Results
-##### Desktop
-90 / 100 Suggestions Summary
-Consider Fixing:
-* Eliminate render-blocking JavaScript and CSS in above-the-fold content
-* Leverage browser caching
-* Enable compression
-* Minify HTML
-##### Mobile
-77 / 100 Speed
-Should Fix:
-* Eliminate render-blocking JavaScript and CSS in above-the-fold content
-Consider Fixing:
-* Leverage browser caching
-* Enable compression
-* Minify HTML
+_Results_
+__90 / 100 Desktop__ 
+__77 / 100 Mobile__
 
-2 - deal with render-blocking JavaScript and CSS in above-the-fold content
+Simply optimizing the images provided a huge boost in performance.
+
+2. Deal with render-blocking JavaScript and CSS in above-the-fold content
 
 JS
 Moved scripts to bottom of html
@@ -146,66 +99,58 @@ CSS
 Added media attribute to print.css link to remove from critical path
 Minified and inlined critical css in html file (used Critical Path CSS Generator by Jonas Ohlsson)
 
-#### Results:
-##### Desktop
-95 / 100 Suggestions Summary
+_Results:_
+__95 / 100 Desktop__
+__94 / 100 Mobile__
 
-##### Mobile
-94 / 100 Speed
+#### Extra Fixes
 
-Extra Fixes
+3. Specify Image sizes.
+__95 / 100 Desktop__
+__94 / 100 Mobile__
 
-3 - Specify Image sizes.
-##### Desktop
-95 / 100 Suggestions Summary
+4. Minify scripts and styles (inline and link to minified files in dist folder)_Note_, the PageSpeed score went down for mobile, this is due to the source mapping function in the gulpfile (which caused a minify JS suggestion from PageSpeed) :( but I thought it was worth keeping in.
 
-##### Mobile
-94 / 100 Speed
-
-4 - Minify scripts and styles (inline and link to minified files in dist folder) Note, the PageSpeed score went down for mobile, this is due to the source mapping function in the gulpfile (which caused a minify JS suggestion from PageSpeed) :( but I thought it was worth keeping in.
-
-##### Desktop
-95 / 100 Suggestions Summary
+__Desktop__
+95 / 100
 96 / 100 without source mapping
 
-##### Mobile
-93 / 100 Speed
+__Mobile__
+93 / 100
 94 / 100 without source mapping
 
-5 - minify html file and image optimization - see dist folder for minified version of index.html and src folder for readable version
+5. Minify html file and image optimization - see dist folder for minified version of index.html and src folder for readable version
 
-Results
-##### Desktop
-96 / 100 Suggestions Summary
+_Results:_
+__96 / 100 Desktop__
+__94 / 100 Mobile__
 with and without source mapping
 
-##### Mobile
-94 / 100 Speed
-with and without source mapping
 
 ## Part 2: Optimize Frames per Second in pizza.html
+
+Aim to optimize views/pizza.html until your frames per second rate is 60fps or higher. Also, optimize the pizzas to resize at under 10ms.
+
 View optimized pages here: http://cajoue.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html
 
 ### Actions - Part 2
 * Used Chrome Devtools for analysis
 * Identified two functions that caused forced reflow
 * Resize Fix1 - Removed unnecessary function determineDx and Moved DOM node selection out of resize loop
-* general Fix2 - Optimize images and minify dist folder
-* scroll Fix1 - updatePositions() used getElementsByClassName and reduced number of pizzas
-* scroll Fix2 - updatePositions() move phase and scrolldist out of loop
-* general Fix2 - use getElementBy... instead of querySelector throughout for consistency and efficiency.
+* General Fix2 - Optimize images and minify dist folder
+* Scroll Fix1 - updatePositions() used getElementsByClassName and reduced number of pizzas
+* Scroll Fix2 - updatePositions() move phase and scrolldist out of loop
+* General Fix2 - use getElementBy... instead of querySelector throughout for consistency and efficiency.
+* Scroll Fix3 - used a lovely transform instead of style change in updatePositions. This was more efficient - now that there are fewer pizzas to move, a separate layer was created for each pizza so that they didn't have to be constantly repainted. Noticed that the pizza position was now off :( so made change to calc
+* Scroll Fix4 - used requestAnimationFrame for pizza animation. Although performance was good, I couldn't get it out of my head that I should use rAF to handle the moving elements. 
 
 ### Initial results
 #### Console messages from Timing API
 Time to generate pizzas on load: 19.01 ms
 Avg time (ms) to generate last 10 frames: 37.4, 29.8, 29.4, 28.5, 27.6
 Time (ms) to resize Pizzas: 81.1, 82.6, 105.9, 109.6, 84.9
-#### Initial load
-First Paint: 5.29s
-DOMContentLoaded: 5.6s
-Load Event: 6.12s
+
 #### Initial resize
-fps: 5
 Frame time (ms): 173.9
 Summary   | Time   | Self Time
 ---------------------------
@@ -219,34 +164,7 @@ determDx  |   2.16 | 0.44
 *Forced reflow is a likely performance bottleneck.*
 due to repeated calls to Recalculate Styles and Layout
 
-#### resize Fix1
-fps: 23
-Frame time (ms): 41.9
-Summary   | Time   | Self Time
----------------------------
-mouseup   | 2.62 | 0.04
-change    | 2.57 | 0.08
-func call | 2.49 | 0.9
-onchange  | 1.59 | 0
-resizePiz | 1.59 | 0.93
-
-*Recalc style now followed by Layout once only.*
-Recalc Style |  1.43 | 1.43 | 200 elements
-Layout       | 16.0  | 16.0 | 115 nodes
-
-#### resize after image optimization
-fps: 32
-Frame time (ms): 31
-Summary   | Time   | Self Time
----------------------------
-mouseup   | 1.15 | 0.04
-change    | 1.11 | 0.10
-func call | 0.95 | 0.25
-onchange  | 0.71 | 0
-resizePiz | 0.71 | 0.52
-
-
-#### Initial Scroll - samples
+#### Initial scroll - samples
 Frames per second: 13, 12, 12, 12, 12
 Frame time (ms): 75.55, 78.9, *77.6*, 80.6, 80.7
 Summary   | Time  | Self Time
@@ -256,44 +174,38 @@ func call | 67.85 | 0.57
 updatePos | 67.27 | *32.88*
 *Forced reflow is a likely performance bottleneck.*
 
-#### scroll Fix1
-* updatePositions() use getElementsByClassName and reduce number of pizzas
-Frames per second: 39, 53, 51, 47, 45
-Frame time (ms): 25.6, 18.7, *19.6*, 20.8, 21.9
-Summary   | Time  | Self Time
----------------------------
-Scroll    | 12.84 | 0.10
-func call | 12.29 | 0.09
-updatePos | 12.20 | *6.62*
-*Forced reflow is a likely performance bottleneck.*
-
-#### scroll Fix2
-* updatePositions() move phase and scrolldist out of loop
-Frames per second: 66, 66, 59, 59, 60
-Frame time (ms): 15.1, 15.1, *16.8*, 16.8, 16.6
-Summary   | Time  | Self Time
----------------------------
-Scroll    | 0.37 | 0.08
-func call | 0.29 | 0.24
-updatePos | 0.05 | 0.05
-
-#### scroll Fix3
-used a lovely transform instead of style change in updatePositions
-noticed that the pizza position was now off :( so made change to calc
-
-#### scroll Fix4
-used requestAnimationFrame for pizza animation. Although performance was good, I couldn't get it out of my head that I should use rAF to handle the moving elements. 
-
 ### Optimized results
 #### Console messages from Timing API
-Time to generate pizzas on load: 41.21 ms
-Avg time (ms) to generate last 10 frames: 2.11, 0.24, 0.24, 0.27, 0.24
-Time (ms) to resize Pizzas: 0.92, 0.44, 0.34, 0.42, 0.39
+Time to generate pizzas on load: 17.63 ms
+Avg time (ms) to generate last 10 frames: 0.31, 0.24, 0.24, 0.27, 0.24
+Time (ms) to resize Pizzas: 0.60, 0.38, 0.34, 0.42, 0.36
 
-### TODO and next steps
-tidy up comments in main.js and readme
-lint main.js
-measure
+#### Optimized resize
+Frame time (ms): 31
+Summary   | Time   | Self Time
+---------------------------
+mouseup   | 1.15 | 0.04
+change    | 1.11 | 0.10
+func call | 0.95 | 0.25
+onchange  | 0.71 | 0
+resizePiz | 0.71 | 0.52
+
+#### Optimized scroll - samples
+Frames per second: 64, 58, 60, 58, 59
+Frame time (ms): 15.58, 16.97, *16.61*, 17.16, 16.69
+Summary   | Time  | Self Time
+---------------------------
+Scroll    | 0.17 | 0.10
+func call | 0.08 | 0.07
+onScroll  | 0.01 | 0
+
+### Summary and lessons learned
+* Use more specific methods when selecting DOM nodes - getElementby... instead of querySelector...
+* Don't select DOM nodes inside loops
+* Use requestAnimationFrame for moving elements
+* Be aware of forced reflow (layout and recalc styles) - try a transform instead of style change
+* Be aware of the number of elements on a page! Don't create more than necessary.
+* Be aware of where calculations take place - they don't necessarily need to be inside a loop.
 
 ### Resources
 * https://docs.npmjs.com/getting-started/using-a-package.json
