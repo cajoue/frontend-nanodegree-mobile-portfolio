@@ -404,22 +404,16 @@ var resizePizzas = function(size) {
 
   // Changes the value for the size of the pizza above the slider
   function changeSliderLabel(size) {
-    // use getElementbyId instead of querySelector
-    // try use variable for pizzaSize - didn't work
-    // var pizzaSize = document.getElementById('pizzaSize').innerHTML;
+    // VY Comment: use getElementbyId instead of querySelector
     switch(size) {
       case "1":
         document.getElementById('pizzaSize').innerHTML = "Small";
-        //console.log('413: ' + document.getElementById('pizzaSize').innerHTML);
-        //document.querySelector("#pizzaSize").innerHTML = "Small";
         return;
       case "2":
         document.getElementById('pizzaSize').innerHTML = "Medium";
-        //document.querySelector("#pizzaSize").innerHTML = "Medium";
         return;
       case "3":
         document.getElementById('pizzaSize').innerHTML = "Large";
-        //document.querySelector("#pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -427,41 +421,13 @@ var resizePizzas = function(size) {
   }
   changeSliderLabel(size);
 
-  // Browser Rendering Optimization Course established that the determineDx
+  // VY Comment: Browser Rendering Optimization Course established that the determineDx
   // function was bizarre and added unnecessary complexity rather than
   // efficiency. Used the size switcher code in changePizzaSizes function.
-
-  // // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-  // function determineDx (elem, size) {
-  //   var oldWidth = elem.offsetWidth;
-  //   var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
-  //   var oldSize = oldWidth / windowWidth;
-
-  //   // Optional TODO: change to 3 sizes? no more xl?
-  //   // Changes the slider value to a percent width
-  //   function sizeSwitcher (size) {
-  //     switch(size) {
-  //       case "1":
-  //         return 0.25;
-  //       case "2":
-  //         return 0.3333;
-  //       case "3":
-  //         return 0.5;
-  //       default:
-  //         console.log("bug in sizeSwitcher");
-  //     }
-  //   }
-
-  //   var newSize = sizeSwitcher(size);
-  //   var dx = (newSize - oldSize) * windowWidth;
-
-  //   return dx;
-  // }
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
     var newWidth;
-
     switch(size) {
       case "1":
         newWidth = 25;
@@ -476,14 +442,11 @@ var resizePizzas = function(size) {
         console.log("bug in sizeSwitcher");
     }
 
-    // select DOM nodes and save to variable outside of loop - instead of
-    // querying multiple times!
+    // VY Comment: select DOM nodes and save to variable outside of loop
+    // - instead of querying multiple times!
     // also use getElementsByClassName instead of queryselectorall
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
-
     for (var i = 0; i < randomPizzas.length; i++) {
-      //var dx = determineDx(randomPizzas[i], size);
-      //var newwidth = (randomPizzas[i].offsetWidth + dx) + 'px';
       randomPizzas[i].style.width = newWidth + "%";
     }
   }
@@ -500,10 +463,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-// move pizzasDiv out of loop
-  var pizzasDiv = document.getElementById("randomPizzas");
+// VY Comment: move pizzasDiv out of loop
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  // var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -531,40 +493,60 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-// Moved pizzaItems outside of function so taht don't repeatedly call DOM elements
+// VY Comment: Moved pizzaItems outside of function so that don't repeatedly call DOM elements
 var pizzaItems = document.getElementsByClassName('mover');
+
+// VY Comment: although performance looks good - can't get it out of my head
+// that i need to try rAF because of the visual updates
+// var ticking and requestTick() inspired by Paul Lewis:
+// http://www.html5rocks.com/en/tutorials/speed/animations/
+var ticking = false;
+
+// Callback for scroll event
+function onScroll() {
+    requestTick();
+}
+
+// Call rAF if it's not already been done
+function requestTick() {
+    if(!ticking) {
+        requestAnimationFrame(updatePositions);
+        ticking = true;
+    }
+}
+
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // this loop is causing the forced reflow (layout and recalc styles)
-  // the number of items selection could be done with getElementsByClassName and maybe
+  // VY Comment: this loop is causing the forced reflow (layout and recalc styles)
+  // the number of items selection could be done with getElementsByClassName instead of querySelectorAll and maybe
   // outside the function - also do not need 200 pizza items! 32 works for my screen... 8 cols 4 rows
   // there are only 5 values of phase - take outside the loop
   // The Element.scrollTop property gets or sets the number of pixels that the content of an element is scrolled upward.
   // take scrollTop out of loop.
+  // set some some values outside of the loop instead of repeatedly calculating them
 
-  // var items = document.querySelectorAll('.mover');
-  // var pizzaItems = document.getElementsByClassName('mover');
+  // VY Comment: use a transform instead of style change - very nice!
+  // but noticed that needed to rework code as transform had wrong pizza positions
+  // they were translated by half a screen!
+
   var phases = [];
   var scrollDist = document.body.scrollTop / 1250;
+  var halfScreen = window.innerWidth / 2;
+
   for (var i = 0; i < 5; i++) {
-    phases[i] = Math.sin(scrollDist + i) * 100;
+    phases[i] = Math.sin(scrollDist + i) * 100 - halfScreen;
   }
 
-  // try using a transform instead of style change - oooh lovely :)
-  // needed to rework code as transform had wrong pizza positions
-  // translated by half a screen.
-  var halfScreen = window.innerWidth / 2;
-  // the halfScreen works - but I'm not sure why....
+  // VY Comment: the halfScreen works - but I'm not sure why....
+  // In the loop I wanted to use pizzaItems[i].style.transform = 'translateX(' + phase + 'px)';
+  // but then the pizzas were squished in the middle of the screen.
+  // I needed both the halfScreen and basicLeft values to make it work
 
   for (var i = 0; i < pizzaItems.length; i++) {
-     var phase = phases[i % 5] - halfScreen;
-    //pizzaItems[i].style.left = pizzaItems[i].basicLeft + phase + 'px';
+     var phase = phases[i % 5];
     pizzaItems[i].style.transform = 'translateX(' + (pizzaItems[i].basicLeft + phase) + 'px)';
-    //pizzaItems[i].style.transform = 'translateX(' + phase + 'px)';
-    //console.log(pizzaItems[i].style.transform);
-    //console.log(pizzaItems[i].style.left);
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -575,28 +557,35 @@ function updatePositions() {
     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
     logAverageFrame(timesToUpdatePosition);
   }
+  // allow further rAFs to be called
+    ticking = false;
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+// window.addEventListener('scroll', updatePositions);
+
+// VY Comment: only listen for scroll events
+window.addEventListener('scroll', onScroll, false);
 
 // Generates the sliding pizzas when the page loads.
-// use getElementById instead of querySelector
-// does declare elem outside loop make a difference? not according to measurements
+
+// VY Comment: use getElementById instead of querySelector
+// declare elem outside loop and use DOM call getElementById (not querySelector)
+// limit the number of sliding pizzas
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  // limit the number of sliding pizzas
-  // var elem;
+  var elem;
+  var makePizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < 32; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById("movingPizzas1").appendChild(elem);
+    makePizzas.appendChild(elem);
   }
-  updatePositions();
+  requestAnimationFrame(updatePositions);
 });

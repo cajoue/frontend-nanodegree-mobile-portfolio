@@ -281,24 +281,19 @@ updatePos | 0.05 | 0.05
 used a lovely transform instead of style change in updatePositions
 noticed that the pizza position was now off :( so made change to calc
 
+#### scroll Fix4
+used requestAnimationFrame for pizza animation. Although performance was good, I couldn't get it out of my head that I should use rAF to handle the moving elements. 
+
 ### Optimized results
 #### Console messages from Timing API
-Time to generate pizzas on load: 48.26 ms
-Avg time (ms) to generate last 10 frames: 3.20, 0.24, 0.24, 0.27, 0.24
-Time (ms) to resize Pizzas: 1.36, 0.40, 0.43, 0.44, 0.40
-
-### Some trials that didn't have much effect
-__move elem variable outside of pizza creation loop__
-*Inside loop:*
-Time to generate pizzas on load (ms): 48.235, 71.44, 56.03, 53.84, 56.36
-dcl 34.45, 30.06, 28.97
-*Outside loop:*
-Time to generate pizzas on load (ms):56.85, 43.57, 59.89, 46.98, 52.02
-dcl 33.17, 35.21, 30.83
+Time to generate pizzas on load: 41.21 ms
+Avg time (ms) to generate last 10 frames: 2.11, 0.24, 0.24, 0.27, 0.24
+Time (ms) to resize Pizzas: 0.92, 0.44, 0.34, 0.42, 0.39
 
 ### TODO and next steps
-measure improvements using transform.
-rAF - may not be necessary
+tidy up comments in main.js and readme
+lint main.js
+measure
 
 ### Resources
 * https://docs.npmjs.com/getting-started/using-a-package.json
@@ -307,3 +302,5 @@ rAF - may not be necessary
 * https://jonassebastianohlsson.com/criticalpathcssgenerator/
 * http://www.w3schools.com/jsref/prop_element_scrolltop.asp
 * https://discussions.udacity.com/t/if-using-gulp-for-p4-you-might-find-this-useful/36817
+* https://css-tricks.com/using-requestanimationframe/
+* http://www.html5rocks.com/en/tutorials/speed/animations/
